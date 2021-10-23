@@ -10,27 +10,31 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  PreferredSizeWidget _appbarWidget() {
+    return AppBar(
+        title: GestureDetector(
+          onTap: () {
+            print("click");
+          },
+          child: Row(
+            children: [Text('동춘동'), Icon(Icons.arrow_drop_down)],
+          ),
+        ),
+        elevation: 1,
+        actions: [
+          IconButton(onPressed: () {}, icon: Icon(Icons.search)),
+          IconButton(onPressed: () {}, icon: Icon(Icons.tune)),
+          IconButton(
+            onPressed: () {},
+            icon: SvgPicture.asset("assets/svg/bell.svg", width: 22),
+          ),
+        ]);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-          title: GestureDetector(
-            onTap: () {
-              print("click");
-            },
-            child: Row(
-              children: [Text('동춘동'), Icon(Icons.arrow_drop_down)],
-            ),
-          ),
-          elevation: 1,
-          actions: [
-            IconButton(onPressed: () {}, icon: Icon(Icons.search)),
-            IconButton(onPressed: () {}, icon: Icon(Icons.tune)),
-            IconButton(
-              onPressed: () {},
-              icon: SvgPicture.asset("assets/svg/chat_on.svg", width: 22),
-            ),
-          ]),
+      appBar: _appbarWidget(),
       body: Container(),
       bottomNavigationBar: Container(),
     );
